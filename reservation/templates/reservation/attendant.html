@@ -1,0 +1,28 @@
+{% extends 'reservation/base.html' %}
+{% block content %}
+    <h2>Atendente - Criar Reserva</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label>Mesa:</label>
+        <input type="number" name="mesa" required><br>
+        <label>Data:</label>
+        <input type="date" name="data" required><br>
+        <label>Hora:</label>
+        <input type="time" name="hora" required><br>
+        <label>Quantidade de pessoas:</label>
+        <input type="number" name="quantidade_pessoas" required><br>
+        <label>Nome do responsável:</label>
+        <input type="text" name="nome_responsavel" required><br>
+        <button type="submit" name="criar">Criar Reserva</button>
+    </form>
+    <h3>Cancelar Reserva</h3>
+    <form method="post">
+        {% csrf_token %}
+        <label>ID da Reserva:</label>
+        <input type="number" name="reserva_id" required>
+        <button type="submit" name="cancelar">Cancelar Reserva</button>
+    </form>
+    {% if mensagem %}
+        <p>{{ mensagem }}</p>
+    {% endif %}
+{% endblock %}

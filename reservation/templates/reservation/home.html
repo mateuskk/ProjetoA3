@@ -1,0 +1,10 @@
+{% extends 'reservation/base.html' %}
+{% block content %}
+    <h2>Bem-vindo ao sistema de reservas do restaurante!</h2>
+    <p>Escolha o perfil para acessar as funcionalidades:</p>
+    <ul>
+        <li><a href="{% url 'atendente' %}">Atendente</a></li>
+        <li><a href="{% url 'garcom' %}">Garçom</a></li>
+        <li><a href="{% url 'gerente' %}">Gerente</a></li>
+    </ul>
+{% endblock %}

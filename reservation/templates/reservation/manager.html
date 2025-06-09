@@ -1,0 +1,9 @@
+{% extends 'reservation/base.html' %}
+{% block content %}
+    <h2>Gerente - Relatórios</h2>
+    <ul>
+        <li><a href="{% url 'relatorios' %}?tipo=periodo">Reservas por período</a></li>
+        <li><a href="{% url 'relatorios' %}?tipo=mesa">Reservas por mesa</a></li>
+        <li><a href="{% url 'relatorios' %}?tipo=garcom">Mesas confirmadas por garçom</a></li>
+    </ul>
+{% endblock %}

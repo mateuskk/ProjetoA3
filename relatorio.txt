@@ -1,0 +1,76 @@
+Relatorio - Sistema de Reserva de Mesas
+
+Integrantes da Equipe
+Nome: Mateus Santos de Sousa Bastos RA: 1272418913
+
+Nome: Pedro Henrique Araújo Guimarães de Oliveira RA: 1272417176
+
+Nome: Victor Mota Rocha Alcântara RA: 12724121220
+
+Nome: Guilherme dos Santos Santana RA: 12724129072
+
+Requerimentos de Software
+⦁	Linguagem: Python 3.11 ou superior
+⦁	Framework: Django 5.0.4
+⦁	Banco de Dados: SQLite3 (padrão do Django)
+⦁	Bibliotecas necessárias:
+⦁	asgiref==3.8.1
+⦁	Django==5.0.4
+⦁	sqlparse==0.5.0
+⦁	tzdata==2024.1
+(Todas listadas em requirements.txt)
+⦁	Sistema Operacional: Windows, Linux ou macOS
+⦁	Navegador Web: Qualquer navegador moderno
+
+Instruções para Instalação e Execução
+⦁	Clone ou copie o projeto para sua máquina.
+⦁	Abra o terminal e navegue até a pasta do projeto.
+⦁	(Opcional) Crie e ative um ambiente virtual.
+⦁	Instale as dependências: pip install -r requirements.txt ou python -m pip install -r requirements.txt
+⦁	Realize as migrações do banco de dados: python manage.py migrate
+⦁	Crie um superusuário para acessar o admin: python manage.py createsuperuser
+⦁	Inicie o servidor de desenvolvimento: python manage.py runserver
+⦁	Acesse a aplicação no navegador: http://127.0.0.1:8000/
+⦁	Cadastre mesas pelo admin: http://127.0.0.1:8000/admin
+
+Funcionamento da Aplicação
+
+O sistema de reservas de mesas para restaurante foi desenvolvido utilizando Django e segue o modelo cliente-servidor. Ele possui três perfis de usuários: Atendente, Garçom e Gerente, cada um com funcionalidades específicas acessíveis por páginas web.
+
+⦁	Atendente
+
+O atendente é responsável por cadastrar novas reservas e cancelar reservas existentes. Para criar uma reserva, o atendente informa o número da mesa (que deve estar previamente cadastrada), data, hora, quantidade de pessoas e nome do responsável. O sistema verifica se já existe uma reserva para a mesma mesa, data e hora. Se não houver conflito, a reserva é criada e o sistema exibe o ID da reserva para referência futura. Para cancelar, basta informar o ID da reserva.
+
+⦁	Garçom
+O garçom confirma a utilização de uma reserva feita anteriormente. Ele informa o ID da reserva e seu nome. Se a reserva estiver no status "reservada", ela é marcada como "confirmada" e o nome do garçom é registrado. Isso libera a mesa para novas reservas em datas futuras.
+
+⦁	Gerente
+O gerente pode emitir relatórios em tempo real sobre o andamento das reservas. Os relatórios disponíveis são:
+
+Reservas atendidas ou não em um determinado período. Reservas feitas para uma mesa específica.
+Mesas confirmadas por um determinado garçom.
+Os relatórios são exibidos diretamente na interface web, facilitando o acompanhamento da operação do restaurante.
+
+⦁	Administração de Mesas
+O cadastro de mesas é feito pelo painel administrativo do Django (admin), acessível apenas por superusuários. É necessário cadastrar as mesas antes de realizar reservas.
+
+⦁	Fluxo de Uso
+O usuário acessa a página inicial e escolhe o perfil desejado. Cada perfil possui sua própria interface e funcionalidades.
+Todas as operações são realizadas via formulários web simples.
+O sistema retorna mensagens de sucesso ou erro para cada operação, garantindo clareza ao usuário.
+
+⦁	Banco de Dados
+
+O sistema utiliza SQLite3 como banco de dados relacional, armazenando informações sobre mesas, reservas e confirmações.
+
+
+Justificativa para a Abordagem de Comunicação Escolhida
+A aplicação utiliza comunicação via HTTP através de páginas web desenvolvidas com Django. Essa abordagem foi escolhida porque:
+
+⦁	É padronizada e universal: HTTP é o protocolo mais comum para aplicações cliente-servidor, amplamente adotado em navegadores e APIs. Sua compatibilidade com padrões como REST facilita integrações futuras com sistemas externos.
+
+⦁	Interfaces web dispensam a instalação de softwares adicionais, sendo acessíveis diretamente por navegadores em dispositivos como celulares, tablets ou computadores. Isso reduz barreiras de acesso para usuários finais.
+
+⦁	Acelera o desenvolvimento: O Django fornece componentes prontos para rotas, autenticação de usuários e templates HTML, além de ORM para interação com o banco de dados. Isso reduz a necessidade de código repetitivo e acelera a implementação de funcionalidades críticas.
+
+⦁	A separação de views e templates permite criar interfaces customizadas para cada perfil com níveis de acesso distintos, garantindo simplicidade e segurança conforme os requisitos do projeto..

@@ -1,0 +1,10 @@
+[project]
+name = "restaurant-reservation"
+version = "0.1.0"
+description = "A client-server application for restaurant table reservations."
+
+readme = "README.md"
+requires-python = ">=3.11"
+
+[project.dependencies]
+Django = "^5.0"

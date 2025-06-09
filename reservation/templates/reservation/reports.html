@@ -1,0 +1,52 @@
+{% extends 'reservation/base.html' %}
+{% block content %}
+    <h2>Relatórios</h2>
+    {% if tipo == "periodo" %}
+        <form method="get">
+            <input type="hidden" name="tipo" value="periodo">
+            <label>Data inicial:</label>
+            <input type="date" name="data_ini" required>
+            <label>Data final:</label>
+            <input type="date" name="data_fim" required>
+            <button type="submit">Buscar</button>
+        </form>
+        {% if reservas %}
+            <ul>
+                {% for r in reservas %}
+                    <li>{{ r }} - Status: {{ r.status }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% elif tipo == "mesa" %}
+        <form method="get">
+            <input type="hidden" name="tipo" value="mesa">
+            <label>Número da mesa:</label>
+            <input type="number" name="mesa" required>
+            <button type="submit">Buscar</button>
+        </form>
+        {% if reservas %}
+            <ul>
+                {% for r in reservas %}
+                    <li>{{ r }} - Status: {{ r.status }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% elif tipo == "garcom" %}
+        <form method="get">
+            <input type="hidden" name="tipo" value="garcom">
+            <label>Nome do garçom:</label>
+            <input type="text" name="garcom" required>
+            <button type="submit">Buscar</button>
+        </form>
+        {% if reservas %}
+            <ul>
+                {% for r in reservas %}
+                    <li>{{ r }} - Mesa: {{ r.mesa.numero }} - Data: {{ r.data }} - Hora: {{ r.hora }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endif %}
+    {% if mensagem %}
+        <p>{{ mensagem }}</p>
+    {% endif %}
+{% endblock %}

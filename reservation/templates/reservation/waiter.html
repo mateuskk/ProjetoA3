@@ -1,0 +1,15 @@
+{% extends 'reservation/base.html' %}
+{% block content %}
+    <h2>Garçom - Confirmar Reserva</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label>ID da Reserva:</label>
+        <input type="number" name="reserva_id" required>
+        <label>Seu nome:</label>
+        <input type="text" name="garcom" required>
+        <button type="submit">Confirmar Reserva</button>
+    </form>
+    {% if mensagem %}
+        <p>{{ mensagem }}</p>
+    {% endif %}
+{% endblock %}
